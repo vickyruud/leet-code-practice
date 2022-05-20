@@ -4,17 +4,20 @@
  * @return {number[]}
  */
 const twoSum = (nums, target) => {
-  const map = {};
+    const object = {};
+    const result = [];
+    
+    nums.forEach((num, i) => {
+        const another = target - num
+        if(another in object) {
+            result.push(object[another]);
+            result.push(i);            
+            
+        } else {
+            object[nums[i]] = i
+        }
+    } )
+    
+    return result;
 
-  for (let i = 0; i < nums.length; i++) {
-    const another = target - nums[i];
-
-    if (another in map) {
-      return [map[another], i];
-    }
-
-    map[nums[i]] = i;
-  }
-
-  return null;
-};
+}
