@@ -31,20 +31,37 @@ const data = {
   }
 };
 
+const obtainKeys = (data) => {
+  return Object.keys(data);
+}
+
 const biggestFollower = (data) => {
-  const keys = Object.keys(data);
+  const keys = obtainKeys(data);
   const sortable = []
   for (key of keys) {
     let pushable = {
       name: data[key].name,
       follows: data[key].follows.length
     }
-    sortable.push(pushable)
-  }
+    sortable.push(pushable)  }
 
   const result = sortable.sort((a, b) => a.follows - b.follows);
-  return result[result.length - 1].name
+  return result[result.length - 1].name;
+}
+
+const mostFollowed = (data) => {
+  const keys = obtainKeys(data);
+
+  for (key of keys) {
+  for (follow of data[key].follows) {
+      console.log(follow, key)
+     
+    }
+  }
+ 
 
 }
 
-console.log(biggestFollower(data));
+// console.log(biggestFollower(data));
+
+console.log(mostFollowed(data));
